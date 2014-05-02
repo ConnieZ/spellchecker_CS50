@@ -1,0 +1,17 @@
+0.  This is an artificial word that is used to describe a lung desease caused by prolonged inhaling of silica dust.
+1.  getrusage is a function that returns resource usage statistics.
+2.  struct rusage contains 16 members.
+3.  Because we would like to pass to the function what is actually stored in the rusage variable at that field (before or after).
+4.  The four loop gets a character from the text file, and checks it for various conditions: 1) is it an alphabetical character or an apostrophy? - if so, 
+it will append it to the word array, and increment the index of the array for the next char, if that index is more than the const Max value of word length, 
+then it consumes the rest of the string (it's too long to be a word) and resets the index; 2) if the char is not a letter or apostrophy, it will also skip the rest and reset the index; 
+3) none of the above, and index has been incremented (more than 0), we must have reached the end of the word, we add \0 to "seal" the word, increment the word counter, and 
+check the word for spelling mistakes.
+5.  fscanf is more efficient to use in this example, because the text is not like the dictionary, where each word is only made of letters and ends with a new line. 
+In the actual text file, the words may contain special characters, or numbers, and can also be connected to punctuation marks without a separation by whitespace, 
+while whitespace is essentially the stopping element for fscanf (blank, new line, tab).
+6.  It's better to have them as const, which will prevent any changes from being made to the original values in the text file.
+7.  I implemented a hashtable structure with 26 buckets for each letter of the alphabet. Each node contains the word and the pointer to the next node.
+8.  The spellchecker took 2.94 seconds on the Austin Powers text.
+9.  I haven't tried to improve the code. But if I would take the time to do it, I would expand the number of hashtable buckets (for more letter combinations)
+10. I feel I followed the instructions in the problem set pretty closely and the only bottleneck is how long it takes to process the spell-check, because I only have 26 buckets in my hashtable.
